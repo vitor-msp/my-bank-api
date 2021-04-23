@@ -2,11 +2,6 @@ import express from 'express';
 import { accountModel } from '../models/accountModel.js';
 const router = express();
 
-//----Patch----
-router.patch('/', (req, res) => {
-  res.send(req.body);
-});
-
 //------------Deposito-----------
 router.put('/deposito', async (req, res) => {
   const { cc, ag, value } = req.body;
