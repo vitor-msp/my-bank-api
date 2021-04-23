@@ -1,3 +1,4 @@
+//-----Imports----
 import express from 'express';
 import mongoose from 'mongoose';
 import { accountRouter } from './routes/accountRouter.js';
@@ -5,6 +6,7 @@ const app = express();
 app.use(express.json());
 app.use('/accounts', accountRouter);
 
+//-----Conexão com MongoDB----
 (async () => {
   try {
     await mongoose.connect(
