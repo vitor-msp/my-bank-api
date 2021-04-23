@@ -15,6 +15,7 @@ const accountSchema = mongoose.Schema({
   balance: {
     type: Number,
     required: true,
+    //---valor mínimo requerido----
     min: 0,
   },
 });
