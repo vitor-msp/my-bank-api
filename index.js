@@ -2,6 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { accountRouter } from './routes/accountRouter.js';
+require('dotenv').config();
 const app = express();
 app.use(express.json());
 app.use('/accounts', accountRouter);
@@ -10,7 +11,7 @@ app.use('/accounts', accountRouter);
 (async () => {
   try {
     await mongoose.connect(
-      'mongodb+srv://mongoUser:mongoPass@cluster0.r1s85.mongodb.net/my-bank-api?retryWrites=true&w=majority',
+      `mongodb+srv://${process.env.USERDB}:${process.env.PASSDB}@cluster0.r1s85.mongodb.net/${process.env.DBTOACCESS}?retryWrites=true&w=majority`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -23,4 +24,4 @@ app.use('/accounts', accountRouter);
   }
 })();
 
-app.listen(3000, () => console.log('Api iniciada!'));
+app.listen(process.env.PORT, () => console.log('Api iniciada!'));
